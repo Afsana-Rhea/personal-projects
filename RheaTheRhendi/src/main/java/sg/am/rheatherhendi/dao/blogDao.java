@@ -12,7 +12,7 @@ import sg.am.rheatherhendi.model.Blog;
  *
  * @author afsanamiji
  */
-public interface blogDao {
+public interface BlogDao {
     public void addBlog(Blog blog);
     public void deleteBlog(int blogId);
     public void editBlog(Blog blog);

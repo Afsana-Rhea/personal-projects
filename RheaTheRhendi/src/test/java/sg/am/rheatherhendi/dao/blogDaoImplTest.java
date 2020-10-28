@@ -31,10 +31,10 @@ import sg.am.rheatherhendi.model.Category;
 public class blogDaoImplTest {
     
     @Autowired
-    categoryDao categoryDao;
+    CategoryDao categoryDao;
     
     @Autowired
-    blogDao blogDao;
+    BlogDao blogDao;
     
     public blogDaoImplTest() {
     }

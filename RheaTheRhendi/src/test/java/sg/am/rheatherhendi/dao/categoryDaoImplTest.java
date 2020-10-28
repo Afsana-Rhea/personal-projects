@@ -32,7 +32,7 @@ import sg.am.rheatherhendi.model.Category;
 public class categoryDaoImplTest {
     
     @Autowired
-    categoryDao categoryDao;
+    CategoryDao categoryDao;
     
     public categoryDaoImplTest() {
     }

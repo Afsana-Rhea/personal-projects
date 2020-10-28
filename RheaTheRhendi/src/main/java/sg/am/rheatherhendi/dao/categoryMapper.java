@@ -14,7 +14,7 @@ import sg.am.rheatherhendi.model.Category;
  *
  * @author afsanamiji
  */
-public class categoryMapper implements RowMapper<Category>{
+public class CategoryMapper implements RowMapper<Category>{
 
     @Override
     public Category mapRow(ResultSet rs, int i) throws SQLException {

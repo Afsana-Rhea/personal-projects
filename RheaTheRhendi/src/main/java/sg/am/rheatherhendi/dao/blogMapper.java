@@ -17,7 +17,7 @@ import sg.am.rheatherhendi.model.Blog;
  */
 
 @Repository
-public class blogMapper implements RowMapper<Blog>{
+public class BlogMapper implements RowMapper<Blog>{
 
     @Override
     public Blog mapRow(ResultSet rs, int i) throws SQLException {

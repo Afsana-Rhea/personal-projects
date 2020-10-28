@@ -15,7 +15,7 @@ import sg.am.rheatherhendi.model.Blog;
 import sg.am.rheatherhendi.model.Category;
 
 @Repository
-public class categoryDaoImpl implements categoryDao {
+public class CategoryDaoImpl implements CategoryDao {
     
     @Autowired
     JdbcTemplate jdbc;
@@ -48,7 +48,7 @@ public class categoryDaoImpl implements categoryDao {
     public Category getCategoryById(int catId) {
         try{
         final String GET_CAT = "SELECT * FROM category WHERE categoryId = ?";
-        Category category = jdbc.queryForObject(GET_CAT, new categoryMapper(), catId);
+        Category category = jdbc.queryForObject(GET_CAT, new CategoryMapper(), catId);
         category.setBlogs(getBlogsForCategory(category));
         return category;
         }catch(DataAccessException ex){
@@ -60,7 +60,7 @@ public class categoryDaoImpl implements categoryDao {
     public List<Category> getAllCategories() {
         try{
             final String GET_ALL_CATS = "SELECT * FROM category";
-            List<Category> categories = jdbc.query(GET_ALL_CATS, new categoryMapper());
+            List<Category> categories = jdbc.query(GET_ALL_CATS, new CategoryMapper());
             for(Category category : categories){
                 category.setBlogs(getBlogsForCategory(category));
             }
@@ -73,7 +73,7 @@ public class categoryDaoImpl implements categoryDao {
 
     private List<Blog> getBlogsForCategory(Category category) {
         final String GET_BLOGS_FOR_CAT = "SELECT * FROM blog WHERE categoryId = ?";
-        return jdbc.query(GET_BLOGS_FOR_CAT, new blogMapper(), category.getiD());
+        return jdbc.query(GET_BLOGS_FOR_CAT, new BlogMapper(), category.getiD());
     }
     
 }

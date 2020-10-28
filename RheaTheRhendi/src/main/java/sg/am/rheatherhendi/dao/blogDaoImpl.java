@@ -15,7 +15,7 @@ import sg.am.rheatherhendi.model.Blog;
 import sg.am.rheatherhendi.model.Category;
 
 @Repository
-public class blogDaoImpl implements blogDao {
+public class BlogDaoImpl implements BlogDao {
     
     @Autowired
     JdbcTemplate jdbc;
@@ -46,7 +46,7 @@ public class blogDaoImpl implements blogDao {
     public Blog getById(int blogId) {
         try{
             final String GET_BLOG_BY_ID = "SELECT * from blog WHERE blogId = ?";
-            Blog blog = jdbc.queryForObject(GET_BLOG_BY_ID, new blogMapper(), blogId);
+            Blog blog = jdbc.queryForObject(GET_BLOG_BY_ID, new BlogMapper(), blogId);
             blog.setCategory(getCategoryforBlog(blog));
             return blog;
         }catch (DataAccessException ex){
@@ -57,7 +57,7 @@ public class blogDaoImpl implements blogDao {
     @Override
     public List<Blog> getAllBlogs() {
     final String GET_BLOGS = "SELECT * FROM blog";
-    List<Blog> blogs = jdbc.query(GET_BLOGS, new blogMapper());
+    List<Blog> blogs = jdbc.query(GET_BLOGS, new BlogMapper());
     return associateCategoryForBlogs(blogs);
     }
 
@@ -65,7 +65,7 @@ public class blogDaoImpl implements blogDao {
     public Blog getBlogByName(String blogName) {
         try{
                 final String GET_BLOG = "SELECT * from blog WHERE blogTitle = ?"; 
-                Blog blog = jdbc.queryForObject(GET_BLOG, new blogMapper(), blogName);
+                Blog blog = jdbc.queryForObject(GET_BLOG, new BlogMapper(), blogName);
                 blog.setCategory(getCategoryforBlog(blog));
                 return blog;
         }catch(DataAccessException ex){
@@ -76,7 +76,7 @@ public class blogDaoImpl implements blogDao {
 
     private Category getCategoryforBlog(Blog blog) {
     final String GET_CATEGORY_FOR_BLOG = "SELECT * FROM category JOIN blog ON blog.categoryId = category.categoryId WHERE blog.blogId = ?";
-    return jdbc.queryForObject(GET_CATEGORY_FOR_BLOG, new categoryMapper(), blog.getiD());
+    return jdbc.queryForObject(GET_CATEGORY_FOR_BLOG, new CategoryMapper(), blog.getiD());
     }
 
     private List<Blog> associateCategoryForBlogs(List<Blog> blogs) {

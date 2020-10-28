@@ -12,7 +12,7 @@ import sg.am.rheatherhendi.model.Category;
  *
  * @author afsanamiji
  */
-public interface categoryDao {
+public interface CategoryDao {
     
    public void addCategory(Category category);
    public void deleteCategory(int catId);
